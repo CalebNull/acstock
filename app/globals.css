@@ -126,3 +126,11 @@ html, body, :root {
     @apply bg-background text-foreground;
   }
 }
+
+.bg-hero-gradient {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(90, 60, 200, 0.45), transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(120, 30, 180, 0.35), transparent 70%),
+    linear-gradient(135deg, #0a0631, #150b42, #241045);
+}
+
