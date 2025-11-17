@@ -1,3 +1,6 @@
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="flex h-screen flex-col items-center justify-center bg-sky-300">
@@ -5,6 +8,9 @@ export default function Home() {
         <h1 className="text-6xl font-semibold text-white drop-shadow-md">
           Auth
         </h1>
+        <Link href="/auth/login">
+          <Button className="cursor-pointer">Sign In</Button>
+        </Link>
       </div>
     </main>
   );
