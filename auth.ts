@@ -27,7 +27,7 @@ export const {
   callbacks: {
     async signIn({ user, account }) {
       // Allow OAuth without email verification
-      if (account?.provider !== "credentials" ) return true;
+      if (account?.provider !== "credentials") return true;
 
       if (!user?.id || typeof user.id !== "string") {
         console.error("User object missing ID during sign-in.");
@@ -43,7 +43,7 @@ export const {
 
       return true;
     },
-    async session({ token,  session}) {
+    async session({ token, session }) {
       console.log({ sessionToken: token, session });
       if (token.sub && session.user) {
         session.user.id = token.sub;
@@ -53,6 +53,10 @@ export const {
         session.user.role = token.role as UserRole;
       }
 
+      if (session.user) {
+        session.user.emailVerified = token.emailVerified as Date;
+      }
+
       return session;
     },
     async jwt({ token }) {
@@ -60,9 +64,10 @@ export const {
 
       const existingUser = await getUserById(token.sub);
 
-      if(!existingUser) return token;
+      if (!existingUser) return token;
 
       token.role = existingUser.role;
+      token.emailVerified = existingUser.emailVerified;
 
       return token;
     }
