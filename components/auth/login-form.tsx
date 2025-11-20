@@ -67,7 +67,7 @@ export const LoginForm = () => {
                     <Input
                       {...field}
                       disabled={isPending}
-                      placeholder="john.doe@example.com"
+                      placeholder="name@example.com"
                       type="email"
                     />
                   </FormControl>
@@ -81,22 +81,24 @@ export const LoginForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="********"
-                      type="password"
-                    />
-                  </FormControl>
-                  <Button
-                    size="sm"
-                    variant="link"
-                    asChild
-                    className="px-0 font-normal"
-                  >
-                    <Link href="/auth/forgot-password">Forgot password?</Link>
-                  </Button>
+                  <div className="flex items-center justify-center flex-col">
+                    <FormControl className="flex items-center justify-center flex-col">
+                      <Input
+                        {...field}
+                        disabled={isPending}
+                        placeholder="********"
+                        type="password"
+                      />
+                    </FormControl>
+                    <Button
+                      size="sm"
+                      variant="link"
+                      asChild
+                      className="pt-[10px] font-normal w-fit"
+                    >
+                      <Link href="/auth/forgot-password">Forgot password?</Link>
+                    </Button>
+                  </div>
                   <FormMessage />
                 </FormItem>
               )}
